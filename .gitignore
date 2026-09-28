@@ -1,0 +1,23 @@
+# Virtual environments
+.venv/
+.venv-x86/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# PyInstaller build files
+build/
+dist/
+*.spec
+
+# Local databases
+data/*.db
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store

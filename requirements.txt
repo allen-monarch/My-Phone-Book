@@ -1,0 +1,8 @@
+# My Phone Book
+# No external Python packages are required.
+#
+# The application uses Python standard library modules:
+# tkinter
+# sqlite3
+# os
+# shutil
