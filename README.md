@@ -1,51 +1,91 @@
 # My Phone Book
 
-A simple desktop phone book application for Windows, built with Python,
-Tkinter, and SQLite.
+A simple and lightweight desktop phone book application for Windows, built with **Python**, **Tkinter/ttk**, and **SQLite**.
+
+This project was built as a practical portfolio project with a focus on clean structure, local data storage, CRUD operations, search, backup/restore, and Windows executable builds.
 
 ## Features
 
--   Add new contacts
--   Edit existing contacts
--   Delete contacts
--   Search contacts
--   Refresh the contact list
--   View the selected contact's address
--   Create database backups
--   Restore the database from a backup
--   SQLite database for local data storage
--   Simple and lightweight desktop interface
+- Add, edit, and delete contacts
+- Live refresh of the contact list after changes
+- Search across multiple contact fields
+- View the selected contact's address
+- SQLite database backup and restore
+- Local database with no separate database server
+- Lightweight Windows desktop interface
+- Windows x64 and x86 executable builds
 
 ## Contact Information
 
 Each contact can contain:
 
--   First Name
--   Last Name
--   Mobile
--   Phone
--   Email
--   Fax
--   Address
--   Company
--   Group
+- First Name
+- Last Name
+- Mobile
+- Phone
+- Email
+- Fax
+- Address
+- Company
+- Group
 
-First Name and Last Name are required fields.
+**First Name** and **Last Name** are required fields.
+
+## Search
+
+The current search works across:
+
+- First Name
+- Last Name
+- Mobile
+- Phone
+- Email
+- Fax
+- Address
+- Company
+- Group
+
+Search can be performed using the **Search** button or by pressing **Enter** in the search box.
+
+## Backup & Restore
+
+The application includes database backup and restore functionality.
+
+- **Backup:** creates a copy of the current SQLite database at a location selected by the user.
+- **Restore:** replaces the current database with a selected backup after confirmation.
+
+> **Important:** Restoring an older backup replaces the current database. Contacts added after that backup was created will not be present in the restored database.
 
 ## Technology
 
--   Python 3.8
--   Tkinter / ttk
--   SQLite
--   Windows desktop application
+- Python 3.8
+- Tkinter / ttk
+- SQLite
+- PyInstaller
+- Windows
 
-The application does not require a separate database server. All contact
-data is stored locally in a SQLite database.
+The application uses only Python standard-library modules at runtime, so no external Python packages are required for normal source execution.
+
+## Database
+
+The application creates and uses the database automatically at:
+
+```text
+%USERPROFILE%\My Phone Book\phonebook.db
+```
+
+For example:
+
+```text
+C:\Users\YourName\My Phone Book\phonebook.db
+```
+
+The database is intentionally stored outside the project directory so user data is separated from the application source code.
 
 ## Project Structure
 
-``` text
-Phone Book/
+```text
+My-Phone-Book/
 │
 ├── app/
 │   ├── main.py
@@ -57,97 +97,88 @@ Phone Book/
 │       ├── main_window.py
 │       └── contact_form.py
 │
-├── data/
-│   └── phonebook.db
-│
-├── tests/
 ├── assets/
 ├── docs/
+├── tests/
+│   └── __init__.py
+│
+├── .gitignore
 ├── README.md
-├── requirements.txt
-└── .gitignore
+└── requirements.txt
 ```
+
+Build output, virtual environments, Python cache files, local databases, and other machine-specific files are excluded from the repository through `.gitignore`.
 
 ## Running From Source
 
-Make sure Python 3.8 is installed.
+### Requirements
 
-Create and activate a virtual environment:
+- Windows
+- Python 3.8
 
-``` powershell
+Create a virtual environment:
+
+```powershell
 python -m venv .venv
+```
+
+Activate it:
+
+```powershell
 .venv\Scripts\activate
 ```
 
 Run the application:
 
-``` powershell
+```powershell
 python app\main.py
 ```
 
-## Database
+No external package installation is required for the current version.
 
-The application's database is:
+## Download
 
-``` text
-data\phonebook.db
-```
+Pre-built Windows executables are published in the project's GitHub Releases.
 
-The database is created automatically when the application starts if it
-does not already exist.
+https://github.com/allen-monarch/My-Phone-Book/releases
 
-## Backup
+Available builds:
 
-Use the **Backup** button to create a copy of the current SQLite
-database.
+- Windows x64
+- Windows x86 (32-bit)
 
-The application allows the user to choose where the backup file should
-be saved.
+The executable builds are provided separately from the source repository so the Git repository remains focused on source code and project files.
 
-It is recommended to keep backup files in a safe location.
+## Portfolio Project
 
-## Restore
+This project demonstrates practical experience with:
 
-Use the **Restore** button to select a previous database backup.
+- Python application structure
+- Object-oriented programming basics
+- Tkinter/ttk GUI development
+- SQLite database design and CRUD operations
+- Search and filtering logic
+- File and database handling
+- Backup and restore workflows
+- Error handling
+- Virtual environments
+- Git and GitHub
+- PyInstaller executable packaging
+- Windows x86/x64 compatibility considerations
 
-Restoring a backup replaces the current database with the selected
-backup.
+## Future Improvements
 
-The application asks for confirmation before replacing the current
-database.
+Possible future improvements include:
 
-**Important:** Any contacts that were added after the selected backup
-was created will not exist in the restored database.
-
-## Search
-
-The current search searches across the available contact information,
-including:
-
--   First Name
--   Last Name
--   Mobile
--   Phone
--   Email
--   Fax
--   Address
--   Company
--   Group
-
-The search can be performed using the **Search** button or by pressing
-**Enter** in the search box.
-
-## Notes
-
--   The application is designed to remain simple and easy to use.
--   Contact data is stored locally.
--   No internet connection is required for normal operation.
--   The current version uses a general search. More advanced
-    field-specific search can be added in a future version.
--   The address field supports multiline text. Right-to-left text
-    editing may have limitations because of the underlying Tkinter text
-    widget.
+- Advanced field-specific search
+- Additional automated tests
+- Further UI improvements
+- Additional packaging and release automation
 
 ## Version
 
-Current development version: **1.0**
+**Current version: 1.0.0**
+
+## License
+
+This project currently does not include a license. If the project is later distributed as open-source software, an appropriate license can be added.
